@@ -8,9 +8,9 @@
     "lint": "tslint \"src/**/*.ts\"",
     "e2e": "protractor",
     "pree2e": "webdriver-manager update",
-    "start": "http-server",
-    "preinstall": "npm install -g http-server",
-    "postinstall": "ng build && mv dist/* ."
+    "start": "https-server",
+    "preinstall": "npm install -g https-server",
+    "postinstall": "ng build"
   },
   "private": true,
   "dependencies": {
