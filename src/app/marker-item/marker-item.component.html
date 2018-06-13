@@ -1,0 +1,39 @@
+
+<div class="contaiter">
+    <div class="row">
+        <button type="button" class="btn btn-primary" routerLink="/">Back On Map</button>
+        <div class="card" style="width: 18rem;margin: 0 auto;">
+                <div class="example-container">
+                    <div class="card-body">
+                        <h1 class="card-title"># {{ onemarker.id }}</h1>
+                        <mat-form-field>
+                          <input matInput placeholder="Name" 
+                          [ngModel] = "onemarker.name" 
+                          (ngModelChange)="ChangeItem($event,'name')"
+                          >
+                        </mat-form-field>
+                      
+                        <mat-form-field>
+                          <input matInput placeholder="Time" 
+                          [ngxTimepicker]="picker" 
+                          [format]="24" 
+                          [ngModel] = "onemarker.time"
+                          (ngModelChange)="ChangeItem($event,'time')"
+                          >
+                        </mat-form-field>
+                    </div>
+                  </div>
+            
+            
+            
+                <ngx-material-timepicker #picker></ngx-material-timepicker>
+            
+            
+            <!-- <ng-container *ngFor="let item of onemarker; let i = index" > 
+                <input [ngModel] = "item.name" (ngModelChange)="ItemNameChange(i,$event)"/> -->
+                <a class="btn btn-warning" (click)="SaveItem()">Save</a>
+                <a class="btn btn-danger" (click)="DeleteItem()" routerLink="/">Delete</a>
+            <!-- </ng-container> -->
+        </div>
+    </div>
+</div>

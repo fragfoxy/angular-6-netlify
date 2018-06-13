@@ -1,0 +1,54 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened="true">
+    
+    <ul class="list-group">
+      <li *ngFor="let marker of markers; let i = index" >
+        <a class="list-group-item" [routerLink]="['/marker',marker.id]">
+          <mat-list>
+            <mat-list-item>
+              Имя - {{ marker.name }}
+            </mat-list-item>
+            <mat-list-item>
+              Время - {{ marker.time }}
+            </mat-list-item>
+          </mat-list>
+        </a>
+      </li>  
+    </ul>
+
+  </mat-drawer>
+<mat-drawer-content>
+
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom] = "zoom"
+    (mapClick)="onChoseLocation($event)"
+    >
+    <ng-container *ngFor="let item of markers; let i = index">
+      <agm-marker 
+        [latitude]="item.coordslat" 
+        [longitude]="item.coordslng"
+        [label]="item.id + ''"
+        (markerClick)="['/marker',item.id]"
+        [markerDraggable]="item.draggable"
+        (dragEnd)="markerDragEnd(item, $event)"
+        >
+          <agm-info-window [disableAutoPan]="true">
+            <a class="list-group-item" [routerLink]="['/marker',item.id]">
+              <mat-list>
+                <mat-list-item>
+                  {{ item.name }}
+                </mat-list-item>
+                <mat-list-item>
+                  {{ item.time }}
+                </mat-list-item>
+              </mat-list>
+            </a>
+          </agm-info-window>
+        </agm-marker>
+      </ng-container>
+
+  </agm-map>
+</mat-drawer-content>
+</mat-drawer-container>
