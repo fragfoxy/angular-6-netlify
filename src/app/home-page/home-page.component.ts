@@ -29,6 +29,7 @@ export class HomePageComponent implements OnInit {
     else{
       this.markers = JSON.parse(items);
     }
+ 
   }
 // TODO: ПЕРЕНЕСТИ В СЕРВИС
 /* LOCALSTORAGE BLOCK */

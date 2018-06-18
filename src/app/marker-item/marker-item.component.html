@@ -28,11 +28,10 @@
             
                 <ngx-material-timepicker #picker></ngx-material-timepicker>
             
-            
             <!-- <ng-container *ngFor="let item of onemarker; let i = index" > 
                 <input [ngModel] = "item.name" (ngModelChange)="ItemNameChange(i,$event)"/> -->
-                <a class="btn btn-warning" (click)="SaveItem()">Save</a>
-                <a class="btn btn-danger" (click)="DeleteItem()" routerLink="/">Delete</a>
+                <a class="btn btn-warning" (click)="OpenDialogSave(true)">Save</a>
+                <a class="btn btn-danger" (click)="DeleteItem(false)" routerLink="/">Delete</a>
             <!-- </ng-container> -->
         </div>
     </div>

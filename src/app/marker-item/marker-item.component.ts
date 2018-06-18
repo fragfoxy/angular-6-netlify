@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Marker } from "../markers";
-import { element } from 'protractor';
+import { MatDialog } from '@angular/material';
+import { MarkerItemDialogComponent } from '../MarkerItemDialog/MarkerItemDialog.component';
 
 @Component({
   selector: 'app-marker-item',
@@ -13,14 +14,16 @@ export class MarkerItemComponent implements OnInit {
   onemarker: Marker;
   id: number;
   index: number;
+  dialogResult: string;
   
-  constructor(private activateRoute: ActivatedRoute){
- 
+  constructor(
+    private activateRoute: ActivatedRoute, 
+    public dialog: MatDialog,
+    private cdref: ChangeDetectorRef)
+    {
       this.id = activateRoute.snapshot.params['id'];
       console.log("marker id - " + this.id);
-      
-     
-  }
+    }
 
 /* LOCALSTORAGE BLOCK */
 GetItems()
@@ -54,12 +57,13 @@ ChangeItem($event,eventName)
  else if (eventName == "time"){
   this.markers[this.index].time = $event;
  }
+ this.cdref.detectChanges();
 }
 
-SaveItem()
-{
-  this.SetItems();
-}
+// SaveItem()
+// {
+//   this.SetItems();
+// }
 // findNumber(element) {
 // console.log(element.id,this.id);
 
@@ -79,10 +83,23 @@ SaveItem()
 //   }
 // }
 
-DeleteItem()
+DeleteItem(saveordelete)
 {
- 
+  let diaLogRef = this.dialog.open(MarkerItemDialogComponent, {
+    width: '250px',
+    data: {name: this.onemarker.name, time: this.onemarker.time, saveordelete }
+  });
+
   this.markers = this.markers.slice(0,this.index).concat(this.markers.slice(this.index + 1, this.markers.length));
   this.SetItems();
+}
+OpenDialogSave(saveordelete)
+{
+  let diaLogRef = this.dialog.open(MarkerItemDialogComponent, {
+    width: '250px',
+    data: {name: this.onemarker.name, time: this.onemarker.time, saveordelete }
+  });
+  this.SetItems();
+
 }
 }

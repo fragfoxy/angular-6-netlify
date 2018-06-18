@@ -3,16 +3,24 @@ import { NgModule, ApplicationRef, } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatInputModule, MatListModule,} from '@angular/material';
+import { 
+        MatButtonModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatInputModule,
+        MatListModule,
+        MatDialogModule
+      } from '@angular/material';
 import { AgmCoreModule } from '@agm/core';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MarkerItemComponent } from './marker-item/marker-item.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MarkerItemDialogComponent } from './MarkerItemDialog/MarkerItemDialog.component';
 
 
 const appRoutes: Routes =[
@@ -41,14 +49,19 @@ const appRoutes: Routes =[
     MatOptionModule,
     MatInputModule,
     MatListModule,
+    MatDialogModule
     
+  ],
+  entryComponents: [
+    MarkerItemDialogComponent
   ],
   providers: [],
   declarations: [ 
     AppComponent,
     HomePageComponent,
-    MarkerItemComponent
-   ],
+    MarkerItemComponent,
+    MarkerItemDialogComponent
+],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

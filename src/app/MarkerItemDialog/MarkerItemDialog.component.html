@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Результат операции</h1>
+<hr>
+<mat-dialog-content>
+  <div *ngIf="data.saveordelete; else elseBlock">
+    <h4>Имя было изменено на {{data.name}} </h4>
+    <br>
+    <h4>Время было изменено на {{data.time}} </h4>
+  </div>
+  
+  <ng-template #elseBlock>
+      <h4>Маркер с именем {{data.name}} </h4>
+      <br>
+      <h4>Временем {{data.time}} </h4>
+      <br>
+      <h4>Был удален</h4>
+  </ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-dialog-close type="button" class="btn btn-primary" routerLink="/">Вернуться к карте</button>
+</mat-dialog-actions>
