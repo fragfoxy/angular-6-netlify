@@ -32,7 +32,7 @@
         [label]="item.id + ''"
         (markerClick)="['/marker',item.id]"
         [markerDraggable]="item.draggable"
-        (dragEnd)="markerDragEnd(item, $event)"
+        (dragEnd)="markerDragEnd(i, $event)"
         >
           <agm-info-window [disableAutoPan]="true">
             <a class="list-group-item" [routerLink]="['/marker',item.id]">
