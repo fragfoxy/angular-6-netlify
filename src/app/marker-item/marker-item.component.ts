@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Marker } from "../markers";
 import { MatDialog } from '@angular/material';
@@ -20,21 +20,24 @@ export class MarkerItemComponent implements OnInit {
     private dataService: DataService,
     private activateRoute: ActivatedRoute, 
     public dialog: MatDialog,
-    private cdref: ChangeDetectorRef)
+    )
     {
       this.id = activateRoute.snapshot.params['id'];
+      
     }
 
 
 ngOnInit() 
 {
   this.onemarker = this.dataService.GetDataMarker(this.id);  
+  console.log("Наш маркер -  ", this.onemarker);
+  
 }
   
 ChangeItem($event,eventName)
 {
   this.dataService.EditDataMarker(this.id, $event, eventName);
-  this.cdref.detectChanges();
+ 
 }
 DialogDelete(saveordelete)
 {
