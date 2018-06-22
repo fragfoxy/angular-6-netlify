@@ -5,7 +5,7 @@ export class Marker {
         public coordslat?: number,
         public coordslng?: number,
         public draggable?: boolean,
-        public time?: number 
+        public time?: Date 
     )
     {
         if(!name)
@@ -13,7 +13,7 @@ export class Marker {
         if(!draggable)
             this.draggable = true;
         if(!time)
-            this.time = Date.now();
+            this.time = new Date();
     }
     
 }

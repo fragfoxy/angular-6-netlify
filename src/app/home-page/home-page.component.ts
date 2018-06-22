@@ -20,17 +20,32 @@ export class HomePageComponent implements OnInit {
   constructor(private dataService: DataService){}
 
   ngOnInit(): void {
+    this.GetMarkers();
+  }
+
+  GetMarkers()
+  {
     this.markers = this.dataService.GetData();
   }
 
 onChoseLocation(event) {
-  this.dataService.AddData(event.coords.lat, event.coords.lng)
+  this.dataService.SaveItem(
+    new Marker(this.dataService.GetNextId(),null,event.coords.lat,event.coords.lng)
+  );
 }
 
 markerDragEnd(index, $event) {
-  this.dataService.EditDataMarker(index, $event, this.itemName ="lat");
-  this.dataService.EditDataMarker(index, $event, this.itemName ="lng");
-  this.dataService.SetItems();
+  console.log("index",index);
+  console.log("event",$event);
+  if($event &&  $event.coords)
+  {
+    this.markers[index].coordslat = $event.coords.lat;
+    this.markers[index].coordslng = $event.coords.lng;
+    this.dataService.SaveItem(this.markers[index]);
+    this.GetMarkers();
+  }
+  
+  //this.dataService.SetItems();
 }
 
 }

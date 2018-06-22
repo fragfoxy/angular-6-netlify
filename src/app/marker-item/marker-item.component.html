@@ -5,20 +5,20 @@
         <div class="card" style="width: 18rem;margin: 0 auto;">
                 <div class="example-container">
                     <div class="card-body">
-                        <h1 class="card-title"># {{ onemarker.id }}</h1>
+                        <h1 class="card-title"># {{ onemarker?.id }}</h1>
                         <mat-form-field>
                           <input matInput placeholder="Name" 
                           [ngModel] = "onemarker.name" 
-                          (ngModelChange)="ChangeItem($event,'name')"
+                          (ngModelChange)="onemarker.name = $event"
                           >
                         </mat-form-field>
                       
                         <mat-form-field>
                           <input matInput placeholder="Time" 
                           [ngxTimepicker]="picker" 
-                          [format]="24" 
-                          [ngModel] = "onemarker.time"
-                          (ngModelChange)="ChangeItem($event,'time')"
+                          [format]="12" 
+                          [ngModel] = "onemarker.time | date :'hh:mm a'"
+                          (ngModelChange)="TestTime($event)"
                           >
                         </mat-form-field>
                     </div>

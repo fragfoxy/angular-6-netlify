@@ -21,6 +21,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MarkerItemComponent } from './marker-item/marker-item.component';
 import { NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { MarkerItemDialogComponent } from './MarkerItemDialog/MarkerItemDialog.component';
+import { DataService } from './data.service';
 
 
 const appRoutes: Routes =[
@@ -55,7 +56,9 @@ const appRoutes: Routes =[
   entryComponents: [
     MarkerItemDialogComponent
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   declarations: [ 
     AppComponent,
     HomePageComponent,

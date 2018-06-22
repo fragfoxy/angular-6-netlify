@@ -9,7 +9,7 @@
               Имя - {{ marker.name }}
             </mat-list-item>
             <mat-list-item>
-              Время - {{ marker.time }}
+              Время - {{ marker.time | date :'hh:mm a'}}
             </mat-list-item>
           </mat-list>
         </a>
